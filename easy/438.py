@@ -1,31 +1,46 @@
 #!/usr/bin/python
 
-from collections import defaultdict
+import collections
 
 
 class Solution(object):
     def findAnagrams(self, s, p):
         res = []
-        h = defaultdict(int)
-        for c in p:
-            h[p] += 1
-        for c in s[:len(p)]:
-            if h[c] > 0:
-                h[c] -= 1
-                count -= 1
-        left, right, count = , len(p) - 1, len(p)
+        left, right = 0, len(right)
+        c = collections.defaultdict(int)
+            for char in p:
+                c[char] += 1
         while right < len(s):
-            if not count:
-                res.append(left)
-            right += 1
-            if h[right] > 0:
-                h[right] -= 1
-                count -= 1
-            if h[left] >= 0:
-                count += 1
-                h[left] += 1
-            left += 1
+            if right < len(p):
+
+        
+
+
         return res
+
+
+class SolutionRealQuadratic(object):
+    def findAnagrams(self, s, p):
+        res = []
+        h = collections.defaultdict(int)
+        for c in p:
+            h[c] += 1
+        for i in xrange(len(s) - len(p) + 1):
+            check = dict(h)
+            for j in xrange(len(p)):
+                try:
+                    check[s[i+j]] -= 1
+                    if check[s[i+j]] < 0:
+                        break
+                except Exception:
+                    break
+            else:
+                res.append(i)
+        return res
+
+
+s = Solution()
+print s.findAnagrams('abab', 'ab')
 
 
 class SolutionQuadratic(object):
