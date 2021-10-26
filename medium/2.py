@@ -19,29 +19,21 @@ class ListNode:
 
 class Solution:
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
-        root = ListNode((l1.val + l2.val))
-        cf = 1 if root.val >= 10 else 0
-        root.val %= 10
-        p = root
+        p = root = ListNode((l1.val + l2.val) % 10)
+        cf = 1 if l1.val + l2.val >= 10 else 0
         p1, p2 = l1, l2
-
-        while p1.next or p2.next:
-            p.next = ListNode()
-            p = p.next
-            if p1.next:
+        while (p1 and p1.next) or (p2 and p2.next) or cf:
+            if p1 and p1.next:
                 p1 = p1.next
-                p.val += p1.val
-            if p2.next:
+            else:
+                p1.val = 0
+            if p2 and p2.next:
                 p2 = p2.next
-                p.val += p2.val
-            p.val += cf
-            print(p.val)
-            cf = 1 if p.val >= 10 else 0
-            p.val %= 10
-
-        if cf:
-            p.next = ListNode(1, None)
-
+            else:
+                p2.val = 0
+            p.next = ListNode((p1.val + p2.val + cf) % 10)
+            cf = 1 if p1.val + p2.val + cf >= 10 else 0
+            p = p.next
         return root
 
 
