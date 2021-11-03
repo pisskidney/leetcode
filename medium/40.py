@@ -13,7 +13,6 @@ class Solution:
     def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
         res = []
         candidates = sorted(candidates)
-        print(candidates)
 
         def go(index, current, target, last_added):
             if target < 0:
@@ -27,9 +26,7 @@ class Solution:
                 return go(index+1, current, target, False)
 
             go(index+1, current, target, False)
-            current.append(candidates[index])
-            go(index+1, current, target - candidates[index], True)
-            current.pop()
+            go(index+1, current + [candidates[index]], target - candidates[index], True)
 
         go(0, [], target, False)
         return res
