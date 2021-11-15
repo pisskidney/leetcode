@@ -85,11 +85,11 @@ def create_file(difficulty: str, nr: int, title: str, url: str, code: str, *, fo
         f.write((
             '\n\n'
             'def main():\n'
-            '   s = Solution()\n'
-            '   print(s.xxx())\n'
+            '    s = Solution()\n'
+            '    print(s.xxx())\n'
             '\n\n'
             "if __name__ == '__main__':\n"
-            '   raise(SystemExit(main()))'
+            '    raise(SystemExit(main()))'
         ))
 
 
