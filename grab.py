@@ -92,6 +92,8 @@ def create_file(difficulty: str, nr: int, title: str, url: str, code: str, *, fo
             '    raise(SystemExit(main()))'
         ))
 
+    print(f'Created {filename}\n')
+
 
 def main() -> int:
     slug, force = get_url()
