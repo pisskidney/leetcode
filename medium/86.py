@@ -23,6 +23,23 @@ def printl(head: Optional[ListNode]) -> None:
 
 class Solution:
     def partition(self, head: Optional[ListNode], x: int) -> Optional[ListNode]:
+        l = p = ListNode(0)
+        h = q = ListNode(0)
+        while head:
+            if head.val < x:
+                p.next = head
+                p = p.next
+            else:
+                q.next = head
+                q = q.next
+            head = head.next
+        p.next = h.next
+        q.next = None
+        return l.next
+
+
+class SolutionBad:
+    def partition(self, head: Optional[ListNode], x: int) -> Optional[ListNode]:
         if not head:
             return head
         k = n = moved = 0
