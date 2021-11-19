@@ -7,5 +7,7 @@ X
 * (46) Permutations - https://leetcode.com/problems/permutations/
 * (47) Permutations II - https://leetcode.com/problems/permutations-ii/submissions/
 * (57) Insert Interval - https://leetcode.com/problems/insert-interval/
-* (59) 59. Spiral Matrix II - https://leetcode.com/problems/spiral-matrix-ii/
-* !(80) 80. Remove duplicates from Sorted Array O(n) - https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/
+* (59) Spiral Matrix II - https://leetcode.com/problems/spiral-matrix-ii/
+* !(80) Remove duplicates from Sorted Array O(n) - https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/
+* !(86) Partition List - https://leetcode.com/problems/partition-list/
+
