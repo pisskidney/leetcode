@@ -7,7 +7,8 @@ https://leetcode.com/problems/decode-ways/
 
 class Solution:
     def numDecodings(self, s: str) -> int:
-        s = str(int(s))
+        if s.startswith('0'):
+            return 0
         dp = [0 for _ in s]
         valid = set([str(x) for x in range(1, 27)])
         dp[0] = 1
@@ -25,6 +26,10 @@ class Solution:
 def main():
     s = Solution()
     print(s.numDecodings('226'))
+    print(s.numDecodings('0'))
+    print(s.numDecodings('00000'))
+    print(s.numDecodings('000003'))
+    print(s.numDecodings(''))
 
 
 if __name__ == '__main__':
