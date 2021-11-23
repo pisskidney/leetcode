@@ -8,6 +8,24 @@ from typing import List
 
 class Solution:
     def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
+        res = [[]]
+        nums = sorted(nums)
+        for i, num in enumerate(nums):
+            print(res)
+            if i == 0:
+                res.append([num])
+                continue
+            if nums[i] == nums[i-1]:
+                for j in range(len(res) - i, len(res)):
+                    res.append(res[j] + [num])
+                continue
+            for j in range(len(res)):
+                res.append(res[j] + [num])
+        return res
+
+
+class SolutionRecursive:
+    def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
         done = set([])
         nums = sorted(nums)
 
