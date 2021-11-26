@@ -31,7 +31,7 @@ QUERY = '''query questionData($titleSlug: String!) {
             }'''
 
 
-def get_url() -> Tuple[str, str]:
+def get_url() -> Tuple[str, bool]:
     parser = argparse.ArgumentParser(description='Grab leetcode problem')
     parser.add_argument(
         'slug', metavar='slug', type=str, nargs='+',
