@@ -1,37 +1,33 @@
-#!/usr/bin/python
+"""
+88. Merge Sorted Array
+
+https://leetcode.com/problems/merge-sorted-array/
+"""
+from typing import List
 
 
-class Solution(object):
-    def merge(self, nums1, m, nums2, n):
+class Solution:
+    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
         """
-        :type nums1: List[int]
-        :type m: int
-        :type nums2: List[int]
-        :type n: int
-        :rtype: void Do not return anything, modify nums1 in-place instead.
+        Do not return anything, modify nums1 in-place instead.
         """
-        if not nums1 or m == 0:
-            nums1[:] = nums2
-            return 
-        if not nums2 or n == 0:
-            return
-        i, j = 0, 0
-        print 'len: ', m, n
-        while i < m and j < n:
-            if nums1[i] < nums2[j]:
-                i += 1
-            else:
-                nums1[:] = nums1[:i] + [nums2[j]] + nums1[i:]
-                i += 1
+        for i in range(n):
+            for j in reversed(range(m+n-1)):
+                nums1[j], nums1[j-1] = nums1[j-1], nums1[j]
+            nums1[0] = nums2[i]
+            print(nums1)
+            j = 0
+            while j < m + i and nums1[j] > nums1[j+1]:
+                nums1[j], nums1[j+1] = nums1[j+1], nums1[j]
                 j += 1
-                m += 1
-        if j < n:
-            nums1[:] += nums2[j:]
 
 
-s = Solution()
-y = [1, 3, 5, 7, 8, 9, 10]
-x = []
-s.merge(x, len(x), y, len(y))
-print x
+def main():
+    s = Solution()
+    a = [1, 3, 5, 0, 0, 0]
+    print(s.merge(a, 3, [2, 4, 6], 3))
+    print(a)
 
+
+if __name__ == '__main__':
+    raise(SystemExit(main()))
