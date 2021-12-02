@@ -30,27 +30,31 @@ def printx(root: TreeNode) -> None:
 
 
 class Solution:
+
     def recoverTree(self, root: Optional[TreeNode]) -> None:
         """
         Do not return anything, modify root in-place instead.
         """
+        self.prev = None
+        self.first = None
+        self.second = None
 
-        def go(node, imin, imax):
-
+        def go(node):
             if not node:
                 return
 
-            if imin[0] is not None and imin[0] >= node.val:
-                node.val, imin[1].val = imin[1].val, node.val
-                return
-            elif imax[0] is not None and imax[0] <= node.val:
-                node.val, imax[1].val = imax[1].val, node.val
-                return
+            go(node.left)
 
-            go(node.left, imin, (node.val, node) if imax[0] is None or node.val < imax[0] else imax)
-            go(node.right, (node.val, node) if imin[0] is None or node.val > imin[0] else imin, imax)
+            if not self.first and self.prev.val >= node.val:
+                self.first = self.prev
+            if self.first and self.prev.val >= node.val:
+                self.second = node
+            self.prev = node
 
-        go(root, (None, None), (None, None))
+            go(node.right)
+
+        print(self.first, self.second)
+
         return root
 
 
@@ -65,6 +69,7 @@ def main():
     a = TreeNode(2, TreeNode(3, TreeNode(1)))
     printx(a)
     printx(s.recoverTree(a))
+
 
 if __name__ == '__main__':
     raise(SystemExit(main()))
