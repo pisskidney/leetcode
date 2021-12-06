@@ -31,37 +31,35 @@ def printx(root: TreeNode) -> None:
 
 class Solution:
 
+    prev = TreeNode(-99999999999)
+    first = None
+    second = None
+
     def recoverTree(self, root: Optional[TreeNode]) -> None:
         """
         Do not return anything, modify root in-place instead.
         """
-        self.prev = None
-        self.first = None
-        self.second = None
 
         def go(node):
             if not node:
                 return
 
             go(node.left)
-
             if not self.first and self.prev.val >= node.val:
                 self.first = self.prev
             if self.first and self.prev.val >= node.val:
                 self.second = node
             self.prev = node
-
             go(node.right)
 
-        print(self.first, self.second)
+        go(root)
 
-        return root
+        self.first.val, self.second.val = self.second.val, self.first.val
 
 
 def main():
     s = Solution()
     a = TreeNode(1, TreeNode(3, None, TreeNode(2)))
-    printx(a)
     printx(s.recoverTree(a))
 
     print('----------')
