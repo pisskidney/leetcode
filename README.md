@@ -12,3 +12,4 @@ X
 * !(86) Partition List - https://leetcode.com/problems/partition-list/
 * (89) Gray Code - https://leetcode.com/problems/gray-code/ (not that great, mostly tricky)
 * !(95) Unique Binary Search Trees II - https://leetcode.com/problems/unique-binary-search-trees-ii/
+* !(99) Recover Binary Search Tree - https://leetcode.com/problems/recover-binary-search-tree/
