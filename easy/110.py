@@ -19,6 +19,27 @@ class Solution:
 
         def go(node):
             if not node:
+                return 1
+
+            left = go(node.left)
+            right = go(node.right)
+
+            if False in [left, right]:
+                return False
+
+            if abs(left - right) > 1:
+                return False
+
+            return max(left, right) + 1
+
+        return go(root) is not False
+
+
+class Solution2:
+    def isBalanced(self, root: Optional[TreeNode]) -> bool:
+
+        def go(node):
+            if not node:
                 return 1, 1
 
             left = go(node.left)
