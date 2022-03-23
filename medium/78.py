@@ -43,6 +43,11 @@ class Solution2:
         return res
 
 
+class Solution3:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        pass
+
+
 def main():
     sol = Solution()
     print(sol.subsets([1, 2, 3]))
