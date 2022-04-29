@@ -1,7 +1,7 @@
 """
-104. Maximum Depth of Binary Tree
+226. Invert Binary Tree
 
-https://leetcode.com/problems/maximum-depth-of-binary-tree/
+https://leetcode.com/problems/invert-binary-tree/
 """
 from typing import Optional
 
@@ -15,14 +15,21 @@ class TreeNode:
 
 
 class Solution:
-    def maxDepth(self, root: Optional[TreeNode]) -> int:
+    def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
         if not root:
-            return 0
-        return max(self.maxDepth(root.left), self.maxDepth(root.right)) + 1
+            return
+
+        root.left, root.right = root.right, root.left
+
+        self.invertTree(root.left)
+        self.invertTree(root.right)
+
+        return root
 
 
 def main():
     s = Solution()
+    print(s.xxx())
 
 
 if __name__ == '__main__':
